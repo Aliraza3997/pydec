@@ -2,6 +2,22 @@ import time
 
 
 def timeit(precision=2, iters=1):
+    """
+    Prints the execution time of the decorated function.
+
+    Parameters
+    ----------
+    precision : int
+        Floating point precision of execution time.
+    iter : int
+        Number of iterations decorated function should be executed for calculating mean time.
+
+    Returns
+    -------
+    object
+        decorator
+    """
+
     if callable(precision):
         def wrapper(*args, **kw):
             ts = time.time()
