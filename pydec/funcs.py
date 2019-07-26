@@ -64,3 +64,89 @@ def arg_by_value(*out_args):
             return wrapper
 
         return decorator
+
+
+def arg_typecast(*out_args):
+    """
+    Decorator to typecast input arguments to a function.
+
+    All arguments which match with the provided type are converted to the
+    desired type.
+
+    Parameters
+    ----------
+    *args: tuple(s)
+        List of tuples in the form (from_type, to_type) where all arguments with
+        type 'from_type' would be typecasted to 'to_type'
+
+    Returns
+    -------
+    """
+
+    out_args = list(out_args)
+
+    def decorator(func):
+
+        def wrapper(*args, **kwargs):
+            args = list(args)
+
+            # Copy args
+            for cast_idx, cast in enumerate(out_args):
+                from_type, to_type = cast
+                from_args_idx = [idx for idx, arg in enumerate(args) if type(arg) == from_type]
+
+                for arg_idx in from_args_idx:
+                    args[arg_idx] = to_type(args[arg_idx])
+
+            # Copy key args
+            for cast_idx, cast in enumerate(out_args):
+                from_type, to_type = cast
+                from_args_keys = [arg for arg, value in kwargs.items() if type(value) == from_type]
+
+                for arg_name in from_args_keys:
+                    kwargs[arg_name] = to_type(kwargs[arg_name])
+
+            return func(*args, **kwargs)
+
+        return wrapper
+
+    return decorator
+
+
+def ret_typecast(*out_args):
+    """
+    Decorator to typecast return of a function.
+
+    All return variables which match with the provided type are converted to the
+    desired type.
+
+    Parameters
+    ----------
+    *args: tuple(s)
+        List of tuples in the form (from_type, to_type) where all arguments with
+        type 'from_type' would be typecasted to 'to_type'
+
+    Returns
+    -------
+    """
+
+    out_args = list(out_args)
+
+    def decorator(func):
+
+        def wrapper(*args, **kwargs):
+            result = list(func(*args, **kwargs))
+
+            # Copy args
+            for cast_idx, cast in enumerate(out_args):
+                from_type, to_type = cast
+                from_ret_idx = [idx for idx, ret in enumerate(result) if type(ret) == from_type]
+
+                for ret_idx in from_ret_idx:
+                    result[ret_idx] = to_type(result[ret_idx])
+
+            return tuple(result)
+
+        return wrapper
+
+    return decorator
