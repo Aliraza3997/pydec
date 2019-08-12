@@ -110,7 +110,7 @@ Create MinHeap
 
 	from pydec.collections import MinHeap
     
-    hp = MinHeap(nums)
+    hp = MinHeap([1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2])
     
     >>> print(hp.pop())
     -4
@@ -125,7 +125,7 @@ Create MaxHeap
 
 	from pydec.collections import MaxHeap
     
-    hp = MaxHeap(nums)
+    hp = MaxHeap([1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2])
     
     >>> print(hp.pop())
     42
