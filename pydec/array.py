@@ -1,3 +1,14 @@
+
+"""array.py: Collection of useful utilities for numpy.ndarray objects"""
+
+__author__ = "Ali Raza"
+__license__ = "MIT"
+__version__ = "0.9.0"
+__maintainer__ = "Ali Raza"
+__email__ = "aliraza3997@gmail.com"
+__status__ = "Development"
+
+
 import numpy as np
 
 

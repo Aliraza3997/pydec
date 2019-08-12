@@ -1,3 +1,14 @@
+
+"""timer.py: Collection of useful timer utilities"""
+
+__author__ = "Ali Raza"
+__license__ = "MIT"
+__version__ = "0.9.0"
+__maintainer__ = "Ali Raza"
+__email__ = "aliraza3997@gmail.com"
+__status__ = "Development"
+
+
 import time
 
 

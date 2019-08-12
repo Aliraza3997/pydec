@@ -105,3 +105,34 @@ Pass numpy.ndarray args by value.
 	>>> print(arr)
 	[1 2 3]
 	
+### 3. Collections
+Create MinHeap
+
+	from pydec.collections import MinHeap
+    
+    hp = MinHeap(nums)
+    
+    >>> print(hp.pop())
+    -4
+    
+    >>> print(hp.nsmallest(3))
+    [1, 2, 2]
+    
+    >>> print(hp)
+    Heap([1, 2, 2, 23, 7, 8, 18, 23, 42, 37])
+    
+Create MaxHeap
+
+	from pydec.collections import MaxHeap
+    
+    hp = MaxHeap(nums)
+    
+    >>> print(hp.pop())
+    42
+    
+    >>> print(hp.nlargest(3))
+    [37, 23, 23]
+    
+    >>> print(hp)
+    Heap([37, 23, 18, 23, 8, 2, 1, -4, 2, 7])
+	
